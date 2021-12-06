@@ -1,7 +1,7 @@
 # About Haldayne
 
-> For the great... is a succession of little things that are brought together.  
-> &mdash; [Vincent van Gogh, 1882][vg]
+> [For the great... is a succession of little things that are brought together.  
+> &ndash; Vincent van Gogh, 1882][vg]
 
 We publish reusable, framework-agnostic components for PHP. Each component stands
 on its own, doing one thing and doing it well, but are also composable into more
