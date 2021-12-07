@@ -1,0 +1,50 @@
+name: Lint and test
+
+on:
+  workflow_call:
+    inputs:
+      php-version:
+        description: 'The PHP version on which to run the job steps; see https://github.com/shivammathur/setup-php#tada-php-support'
+        type: string
+        default: '8.1'
+        required: true
+      extensions:
+        description: 'Comma-separated list of PHP extensions to have available for the job steps; see https://github.com/shivammathur/setup-php#heavy_plus_sign-php-extension-support'
+        type: string
+        default: ''
+        required: false
+      ini-values:
+        description: 'Comma-separated list of php.ini key=value pairs to set for job steps; see https://github.com/shivammathur/setup-php#ini-values-optional'
+        type: string
+        default: 'error_reporting=E_ALL'
+        required: false
+      coverage:
+        description: 'The code coverage driver to have available; see https://github.com/shivammathur/setup-php#coverage-optional'
+        type: string
+        default: 'xdebug'
+        required: false
+      tools:
+        description: 'Comma-separated list of tools to have available for jobs steps; see https://github.com/shivammathur/setup-php#wrench-tools-support'
+        type: string
+        default: 'composer, phpunit, phpcs, psalm'
+        required: false
+
+jobs:
+  install-php:
+    uses: haldayne/.github/.github/workflows/install-php.yml@main
+    with:
+      php-version: ${{ inputs.php-version }}
+      extensions: ${{ inputs.extensions }}
+      ini-values: ${{ inputs.ini-values }}
+      coverage: ${{ inputs.coverage }}
+      tools: ${{ inputs.tools }}
+
+  lint:
+    needs: install-php
+    steps:
+      # todo
+
+  test:
+    needs: lint
+    steps:
+      # todo
